@@ -1,5 +1,6 @@
 import requests
 import json
+import sys
 
 data = {}
 
@@ -22,6 +23,7 @@ while True:
 
 if(data['tests'][0]['status'] == 'failed'):
     print("Test Execution Failed\n")
+    sys.exit(-1)
 
 
 
