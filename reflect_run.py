@@ -17,7 +17,7 @@ while True:
     response2 = requests.request("GET", url2, data=payload, headers=headers)
     data = json.loads(response2.text)
     print(data['tests'][0]['status'])
-    if(data['tests'][0]['status'] != 'running'):
+    if((data['tests'][0]['status'] != 'running') and (data['tests'][0]['status'] != 'queued')):
         break
 
 if(data['tests'][0]['status'] == 'failed'):
