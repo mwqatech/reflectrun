@@ -4,7 +4,7 @@ pipeline {
     stage('Man Matters Sanity') {
       steps {
          sh 'python3 reflect_run_mm.py'
-         env.mamatters_stage = ${env.STAGE_NAME}
+         env.mamatters_stage = env.STAGE_NAME
       }
     }
   }
