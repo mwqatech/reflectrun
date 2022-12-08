@@ -1,7 +1,7 @@
 pipeline {
   agent any    
   stages {
-    stage('MM Sanity Test') {
+    stage('Man Matters Sanity') {
       steps {
          sh 'python3 reflect_run.py'
       }
