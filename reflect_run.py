@@ -13,7 +13,7 @@ with open('testdata.yml') as f:
     print(tdata['MM_Testdata']['Testcase1'])
 
 
-url = "https://api.reflect.run/v1/tests/" + str(tdata) + "/executions"
+url = "https://api.reflect.run/v1/tests/" + str(tdata['MM_Testdata']['Testcase1']) + "/executions"
 print(url)
 
 payload = ""
