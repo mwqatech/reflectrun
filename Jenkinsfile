@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Man Matters Sanity') {
       steps {
-         sh 'python3 reflect_run.py'
+         sh 'python3 reflect_run_mm.py'
       }
     }
   }
