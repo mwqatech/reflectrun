@@ -1,10 +1,19 @@
 import requests
 import json
 import sys
+import yaml
+from yaml.loader import SafeLoader
 
 data = {}
+tdata = {}
 
-url = "https://api.reflect.run/v1/tests/81208/executions"
+# Open the file and load the file
+with open('testdata.yml') as f:
+    tdata = yaml.load(f, Loader=SafeLoader)
+    print(tdata['MM_Testdata']['Testcase1'])
+
+
+url = "https://api.reflect.run/v1/tests/" + str(tdata) + "/executions"
 print(url)
 
 payload = ""
