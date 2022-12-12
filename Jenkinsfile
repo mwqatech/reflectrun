@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('QA Sanity')
+    stage('QA Sanity'){
      parallel{
         stage('Man Matters Sanity') {
           steps {
