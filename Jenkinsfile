@@ -6,11 +6,6 @@ pipeline {
             sh 'python3 reflect_run_mm.py'
           }
         }
-        stage('Be Bodywise Sanity') {
-          steps {
-            sh 'python3 reflect_run_bw.py'
-          }
-        }
   }   
   post {
         always {
