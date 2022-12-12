@@ -33,7 +33,7 @@ while True:
 
 if(data['tests'][0]['status'] == 'failed'):
     print("Test Execution Failed\n")
-    sys.exit(-1)
+    #sys.exit(-1)
 
 
 
