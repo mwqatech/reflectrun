@@ -1,17 +1,19 @@
 pipeline {
   agent any
   stages {
-    stage('Man Matters Sanity') {
-      steps {
-         sh 'python3 reflect_run_mm.py'
+    parallel {
+      stage('Man Matters Sanity') {
+        steps {
+          sh 'python3 reflect_run_mm.py'
+        }
+      }
+      stage('Be Bodywise Sanity') {
+        steps {
+          sh 'python3 reflect_run_bw.py'
+        }
       }
     }
-    stage('Be Bodywise Sanity') {
-      steps {
-         sh 'python3 reflect_run_bw.py'
-      }
-    }
-  }
+  }  
   post {
         always {
           emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
