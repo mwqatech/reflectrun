@@ -1,10 +1,19 @@
 import requests
 import json
 import sys
+import yaml
+from yaml.loader import SafeLoader
 
 data = {}
+tdata = {}
 
-url = "https://api.reflect.run/v1/tests/80233/executions"
+# Open the file and load the file
+with open('testdata.yml') as f:
+    tdata = yaml.load(f, Loader=SafeLoader)
+    print(tdata['BW_Testdata']['Testcase1'])
+
+
+url = "https://api.reflect.run/v1/tests/" + str(tdata['MM_Testdata']['Testcase1']) + "/executions"
 print(url)
 
 payload = ""
@@ -25,3 +34,7 @@ while True:
 if(data['tests'][0]['status'] == 'failed'):
     print("Test Execution Failed\n")
     sys.exit(-1)
+
+
+
+
