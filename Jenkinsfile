@@ -1,7 +1,7 @@
 pipeline {
   agent any
+  parallel{
   stages {
-    parallel{
         stage('Man Matters Sanity') {
           steps {
             sh 'python3 reflect_run_mm.py'
