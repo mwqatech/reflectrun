@@ -1,17 +1,19 @@
 pipeline {
   agent any
   stages {
-    parallel {
-      stage('Man Matters Sanity') {
-        steps {
-          sh 'python3 reflect_run_mm.py'
+    stage('QA Sanity Testing') {
+      parallel {
+        stage('Man Matters Sanity') {
+          steps {
+            sh 'python3 reflect_run_mm.py'
+          }
         }
-      }
-      stage('Be Bodywise Sanity') {
-        steps {
-          sh 'python3 reflect_run_bw.py'
+        stage('Be Bodywise Sanity') {
+          steps {
+            sh 'python3 reflect_run_bw.py'
+          }
         }
-      }
+      } 
     }  
   post {
         always {
@@ -20,6 +22,5 @@ pipeline {
                 to: 'arun.ramesh@mosaicwellness.in, abhay.kaintura@mosaicwellness.in, tejaswini.gowda@mosaicwellness.in, basanagouda.b@mosaicwellness.in', 
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
             }
-    }
-  }  
+    }  
 }
