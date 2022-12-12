@@ -1,7 +1,8 @@
 pipeline {
   agent any
-  parallel{
   stages {
+    stage('QA Sanity')
+     parallel{
         stage('Man Matters Sanity') {
           steps {
             sh 'python3 reflect_run_mm.py'
@@ -13,6 +14,7 @@ pipeline {
           }
         }
     }
+  }
   }   
   post {
         always {
