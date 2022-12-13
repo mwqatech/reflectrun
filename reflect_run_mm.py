@@ -35,7 +35,7 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
                 print("Test Execution:"+ tvalue +"Failed\n")
                 failed_tcs.append(tvalue)
                 
-            if(failed_tcs is not empty and total_tcs == 0):
+            if(len(failed_tcs) != 0 and total_tcs == 0):
                 print("Please check the failed TCs:", failed_tcs)
                 system.exit(-1)
             total_tcs -= 1
