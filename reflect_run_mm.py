@@ -36,6 +36,7 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
                     print("Test Execution:"+ str(tvalue) +" is Failed\n")
                     failed_tcs.append(tvalue)
                     print("Please check the failed/not triggered TCs:", failed_tcs)
+                    print("Total_TCs to be executed", total_tcs)
 
                 if(len(failed_tcs) != 0 and total_tcs == 0):
                     print("Please check the failed/not triggered TCs:", failed_tcs)
@@ -45,6 +46,7 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
                 print("Test Execution for :"+ str(tvalue) +" is not triggered\n")
                 failed_tcs.append(tvalue)
                 print("Please check the failed/not triggered TCs:", failed_tcs)
+                print("Total_TCs to be executed", total_tcs)
 
                 if(len(failed_tcs) != 0 and total_tcs == 0):
                     print("Please check the failed/not triggered TCs:", failed_tcs)
