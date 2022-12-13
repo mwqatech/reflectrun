@@ -13,6 +13,11 @@ pipeline {
             sh 'python3 reflect_run_bw.py'
           }
         }
+        stage('Little Joys Sanity') {
+          steps {
+            sh 'python3 reflect_run_lj.py'
+          }
+        }
     }
   }
   }   
