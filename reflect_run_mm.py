@@ -20,6 +20,7 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
             headers = {"x-api-key": "x1OBUoR7PY4qH4RyH199pwuN1a7ofw32BxmrfSxf"}
 
             response = requests.request("POST", url, data=payload, headers=headers)
+            total_tcs -= 1
             if(response.status_code == 200):
                 json_data = json.loads(response.text)
 
@@ -35,20 +36,16 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
                 if(data['tests'][0]['status'] == 'failed'):
                     print("Test Execution:"+ str(tvalue) +" is Failed\n")
                     failed_tcs.append(tvalue)
-                    print("Please check the failed/not triggered TCs:", failed_tcs)
                     print("Total_TCs to be executed", total_tcs)
 
                 if(len(failed_tcs) != 0 and total_tcs == 0):
                     print("Please check the failed/not triggered TCs:", failed_tcs)
                     system.exit(-1)
-                total_tcs -= 1
             else:
                 print("Test Execution for :"+ str(tvalue) +" is not triggered\n")
                 failed_tcs.append(tvalue)
-                print("Please check the failed/not triggered TCs:", failed_tcs)
                 print("Total_TCs to be executed", total_tcs)
 
                 if(len(failed_tcs) != 0 and total_tcs == 0):
                     print("Please check the failed/not triggered TCs:", failed_tcs)
                     system.exit(-1)
-                total_tcs -= 1
