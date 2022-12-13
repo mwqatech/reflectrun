@@ -10,10 +10,10 @@ tdata = {}
 # Open the file and load the file
 with open('testdata.yml') as f:
     tdata = yaml.load(f, Loader=SafeLoader)
-    print(tdata['MM_Testdata']['Testcase1'])
+    print(tdata['BW_Testdata']['Testcase1'])
 
 
-url = "https://api.reflect.run/v1/tests/" + str(tdata['MM_Testdata']['Testcase1']) + "/executions"
+url = "https://api.reflect.run/v1/tests/" + str(tdata['BW_Testdata']['Testcase1']) + "/executions"
 print(url)
 
 payload = ""
