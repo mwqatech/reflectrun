@@ -40,7 +40,7 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
 
                 if(len(failed_tcs) != 0 and total_tcs == 0):
                     print("Please check the failed/not triggered TCs:", failed_tcs)
-                    system.exit(-1)
+                    sys.exit(-1)
             else:
                 total_tcs -= 1
                 print("Test Execution for :"+ str(tvalue) +" is not triggered\n")
@@ -49,4 +49,4 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
           
                 if(len(failed_tcs) != 0 and total_tcs == 0):
                     print("Please check the failed/not triggered TCs:", failed_tcs)
-                    system.exit(-1)
+                    sys.exit(-1)
