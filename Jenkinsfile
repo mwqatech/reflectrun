@@ -32,8 +32,8 @@ void create_newjira_issue() {
     node {
       stage('Defect Management') {
         def NewJiraIssue = [fields: [project: [key: 'MWQA'],
-            summary: 'Build Failed : ${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}',
-            description: 'Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME} ',
+            summary: 'Build Failed : Sanity Testing Failed',
+            description: 'Sanity TCs Failed for Man Matters/Be Bodywise/Little Joys',
             issuetype: [id: '10108']]]
 
     response = jiraNewIssue issue: NewJiraIssue, site: 'JIRA'
