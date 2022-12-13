@@ -22,8 +22,10 @@ pipeline {
                 attachLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
                 to: 'arun.ramesh@mosaicwellness.in, abhay.kaintura@mosaicwellness.in, tejaswini.gowda@mosaicwellness.in, basanagouda.b@mosaicwellness.in', 
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
-          create_newjira_issue()
             }
+        failure {
+          create_newjira_issue()
+        }
     }  
 }
 void create_newjira_issue() {
