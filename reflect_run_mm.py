@@ -10,8 +10,8 @@ passed_tcs = []
 failed_tcs = []
 for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
     if(str(key) == 'MM_Testdata'):
+        total_tcs = len(value)
         for tkey, tvalue in value.items():
-            total_tcs = len(value)
             print("Testcase ID = ",tvalue)
             url = "https://api.reflect.run/v1/tests/" + str(tvalue) + "/executions"
             print(url)
@@ -21,6 +21,7 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
 
             response = requests.request("POST", url, data=payload, headers=headers)
             if(response.status_code == 200):
+                total_tcs -= 1
                 json_data = json.loads(response.text)
 
                 url2 = "https://api.reflect.run/v1/executions/" + str(json_data['executionId'])
@@ -41,6 +42,7 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
                     print("Please check the failed/not triggered TCs:", failed_tcs)
                     system.exit(-1)
             else:
+                total_tcs -= 1
                 print("Test Execution for :"+ str(tvalue) +" is not triggered\n")
                 failed_tcs.append(tvalue)
                 print("Total_TCs to be executed", total_tcs)
@@ -48,5 +50,3 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
                 if(len(failed_tcs) != 0 and total_tcs == 0):
                     print("Please check the failed/not triggered TCs:", failed_tcs)
                     system.exit(-1)
-            
-                total_tcs -= 1
