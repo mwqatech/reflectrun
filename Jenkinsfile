@@ -22,6 +22,22 @@ pipeline {
                 attachLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
                 to: 'arun.ramesh@mosaicwellness.in, abhay.kaintura@mosaicwellness.in, tejaswini.gowda@mosaicwellness.in, basanagouda.b@mosaicwellness.in', 
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+          create_newjira_issue()
             }
     }  
+}
+void create_newjira_issue() {
+    node {
+      stage('JIRA') {
+        def NewJiraIssue = [fields: [project: [key: 'MWQA'],
+            summary: 'Build Failed : Summary.',
+            description: 'Description of JIRA ticket ',
+            issuetype: [id: '10108']]]
+
+    response = jiraNewIssue issue: NewJiraIssue, site: 'THAT CAN BE SET IN JENKINS CONFIGURATION OR CAN DIRECTLY WRITE HERE'
+
+    echo response.successful.toString()
+    echo response.data.toString()
+    }
+  }
 }
