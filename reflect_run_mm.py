@@ -34,7 +34,7 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
                         break
 
                 if(data['tests'][0]['status'] == 'failed'):
-                    print("Test Execution:"+ str(tvalue) +" is Failed\n")
+                    print("Test Execution of TC ID "+ str(tvalue) +" is Failed\n")
                     failed_tcs.append(tvalue)
                     print("Total_TCs to be executed", total_tcs)
 
@@ -43,7 +43,7 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
                     sys.exit(-1)
             else:
                 total_tcs -= 1
-                print("Test Execution for :"+ str(tvalue) +" is not triggered\n")
+                print("Test Execution of TC ID "+ str(tvalue) +" is not triggered\n")
                 failed_tcs.append(tvalue)
                 print("Total_TCs to be executed", total_tcs)
           
