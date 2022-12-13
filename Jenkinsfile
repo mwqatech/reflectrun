@@ -34,7 +34,7 @@ void create_newjira_issue() {
             description: 'Description of JIRA ticket ',
             issuetype: [id: '10108']]]
 
-    response = jiraNewIssue issue: NewJiraIssue, site: 'mosaicwellness.atlassian.net'
+    response = jiraNewIssue issue: NewJiraIssue, site: 'JIRA'
 
     echo response.successful.toString()
     echo response.data.toString()
