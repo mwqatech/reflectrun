@@ -32,7 +32,7 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
                     break
 
             if(data['tests'][0]['status'] == 'failed'):
-                print("Test Execution:"+ tvalue +"Failed\n")
+                print("Test Execution:"+ str(tvalue) +" is Failed\n")
                 failed_tcs.append(tvalue)
                 
             if(len(failed_tcs) != 0 and total_tcs == 0):
