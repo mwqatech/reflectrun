@@ -29,7 +29,7 @@ pipeline {
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
             }
         failure {
-          create_newjira_issue(currentBuild.currentResult, env.JOB_NAME, env.BUILD_NUMBER, env.BUILD_URL)
+          create_newjira_issue(${currentBuild.currentResult}, ${env.JOB_NAME}, ${env.BUILD_NUMBER}, ${env.BUILD_URL})
         }
     }  
 }
