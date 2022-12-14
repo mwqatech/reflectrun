@@ -5,17 +5,17 @@ pipeline {
      parallel{
         stage('Man Matters Sanity') {
           steps {
-            sh 'python3 RR_TestCases/reflect_run_mm.py'
+            sh 'python3 reflect_run_mm.py'
           }
         }
         stage('BE Bodywise Sanity') {
           steps {
-            sh 'python3 RR_TestCases/reflect_run_bw.py'
+            sh 'python3 reflect_run_bw.py'
           }
         }
         stage('Little Joys Sanity') {
           steps {
-            sh 'python3 RR_TestCases/reflect_run_lj.py'
+            sh 'python3 reflect_run_lj.py'
           }
         }
     }
