@@ -29,16 +29,16 @@ pipeline {
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
             }
         failure {
-          create_newjira_issue()
+          create_newjira_issue(currentBuild.currentResult, env.JOB_NAME, env.BUILD_NUMBER, env.BUILD_URL)
         }
     }  
 }
-void create_newjira_issue() {
+void create_newjira_issue(result, job_name, build_num, build_url) {
     node {
       stage('Defect Management') {
         def NewJiraIssue = [fields: [project: [key: 'MWQA'],
-            summary: 'Build Failed : Sanity Testing Failed',
-            description: 'Sanity TCs Failed for Man Matters/Be Bodywise/Little Joys',
+            summary: 'QA Sanity Test Build Failed ${build_num} ',
+            description: 'Sanity TCs Failed for Man Matters/Be Bodywise/Little Joys -> Please check on ${build_url} and ${build_num} for the job ${job_name}',
             issuetype: [id: '10108']]]
 
     response = jiraNewIssue issue: NewJiraIssue, site: 'JIRA'
