@@ -17,7 +17,7 @@ for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
             print(url)
 
             payload = ""
-            headers = {"x-api-key": "x1OBUoR7PY4qH4RyH199pwuN1a7ofw32BxmrfSxf"}
+            headers = {"x-api-key": "j5rPTzYWK16hh7xyPRsnz1EYDIbyAcUE7sOKNp4U"}
 
             response = requests.request("POST", url, data=payload, headers=headers)
             if(response.status_code == 200):
