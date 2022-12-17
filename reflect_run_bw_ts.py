@@ -29,8 +29,8 @@ for key, value in yaml.load(open('testdata_ts.yml'), Loader=SafeLoader).items():
                 while True:
                     response2 = requests.request("GET", url2, headers=headers)
                     data = json.loads(response2.text)
-                    print(data['status'])
-                    print(data['isFinished'])
+                    #print(data['status'])
+                    #print(data['isFinished'])
                     if ((data['status'] != 'pending') and (data['status'] != 'running') and (data['isFinished'] != False)):
                         break
 
