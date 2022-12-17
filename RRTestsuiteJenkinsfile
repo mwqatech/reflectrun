@@ -5,7 +5,7 @@ pipeline {
      parallel{
         stage('Man Matters Sanity') {
           steps {
-            sh 'ls -s'
+            sh 'python3 reflect_run_mm_ts.py'
           }
         }
         stage('BE Bodywise Sanity') {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Little Joys Sanity') {
           steps {
-            sh 'ls -l'
+            sh 'python3 reflect_run_lj_ts.py'
           }
         }
     }
@@ -25,7 +25,7 @@ pipeline {
         always {
           emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
                 attachLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                to: 'arun.ramesh@mosaicwellness.in, abhay.kaintura@mosaicwellness.in, tejaswini.gowda@mosaicwellness.in, basanagouda.b@mosaicwellness.in', 
+                to: 'bhushan.pujar@mosaicwellness.in, arun.ramesh@mosaicwellness.in, abhay.kaintura@mosaicwellness.in, tejaswini.gowda@mosaicwellness.in, basanagouda.b@mosaicwellness.in', 
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
             }
         failure {
