@@ -29,9 +29,9 @@ for key, value in yaml.load(open('testdata_ts.yml'), Loader=SafeLoader).items():
                 while True:
                     response2 = requests.request("GET", url2, headers=headers)
                     data = json.loads(response2.text)
-                    #print(data['status'])
-                    #print(data['isFinished'])
                     if ((data['status'] != 'pending') and (data['status'] != 'running') and (data['isFinished'] != False)):
+                        print("Execution of Test Suite " + str(tvalue) + "is in Progress ...\n")
+                        time.sleep(5)
                         break
 
                 if (data['status'] == 'failed'):
