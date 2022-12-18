@@ -5,12 +5,12 @@ pipeline {
      parallel{
         stage('Man Matters Sanity') {
           steps {
-            sh 'python3 reflect_run_mm_ts.py'
+            sh 'ls -l'
           }
         }
         stage('BE Bodywise Sanity') {
           steps {
-            sh 'python3 reflect_run_bw_ts.py'
+            sh 'ls -l'
           }
         }
         stage('Little Joys Sanity') {
