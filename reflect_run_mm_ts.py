@@ -1,5 +1,4 @@
 import requests
-import time
 import json
 import sys
 import yaml
@@ -32,7 +31,6 @@ for key, value in yaml.load(open('testdata_ts.yml'), Loader=SafeLoader).items():
                     data = json.loads(response2.text)
                     if ((data['status'] != 'pending') and (data['status'] != 'running') and (data['isFinished'] != False)):
                         print("Execution of Test Suite " + str(tvalue) + "is in Progress ...\n")
-                        time.sleep(5)
                         break
 
                 if (data['status'] == 'failed'):
