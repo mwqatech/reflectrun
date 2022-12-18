@@ -13,7 +13,7 @@ for key, value in yaml.load(open('testdata_ts.yml'), Loader=SafeLoader).items():
     if (str(key) == 'MM'):
         total_tss = len(value)
         for tkey, tvalue in value.items():
-            print("Testsuite ID = ", tvalue)
+            print("Test Suite ID = ", tvalue)
             url = "https://api.reflect.run/v1/suites/" + str(tvalue) + "/executions"
             print(url)
 
@@ -45,7 +45,7 @@ for key, value in yaml.load(open('testdata_ts.yml'), Loader=SafeLoader).items():
                     sys.exit(-1)
             else:
                 total_tss -= 1
-                print("Test Execution of Testsuite ID " + str(tvalue) + " is not triggered\n")
+                print("Test Execution of Test Suite ID " + str(tvalue) + " is not triggered\n")
                 failed_tss.append(tvalue)
                 print("Total Test Suites to be executed", total_tss)
 
