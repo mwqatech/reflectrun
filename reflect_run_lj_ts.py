@@ -7,13 +7,12 @@ from yaml.loader import SafeLoader
 
 data = {}
 total_tss = 0
-passed_tss = []
 failed_tss = []
 for key, value in yaml.load(open('testdata_ts.yml'), Loader=SafeLoader).items():
     if (str(key) == 'LJ'):
         total_tss = len(value)
         for tkey, tvalue in value.items():
-            print("Testcase ID = ", tvalue)
+            print("Testsuite ID = ", tvalue)
             url = "https://api.reflect.run/v1/suites/" + str(tvalue) + "/executions"
             print(url)
 
@@ -36,19 +35,19 @@ for key, value in yaml.load(open('testdata_ts.yml'), Loader=SafeLoader).items():
                         break
 
                 if (data['status'] == 'failed'):
-                    print("Test Suite Execution of Test Suite ID " + str(tvalue) + " is Failed\n")
+                    print("Test Execution of Test Suite ID " + str(tvalue) + " is Failed\n")
                     failed_tss.append(tvalue)
                     print("Total Test Suites to be executed", total_tss)
 
                 if (len(failed_tss) != 0 and total_tss == 0):
-                    print("Please check the failed/not triggered TCs:", failed_tss)
+                    print("Please check the failed/not triggered Testsuites:", failed_tss)
                     sys.exit(-1)
             else:
                 total_tss -= 1
-                print("Test Execution of TC ID " + str(tvalue) + " is not triggered\n")
+                print("Test Execution of Test Suite ID " + str(tvalue) + " is not triggered\n")
                 failed_tss.append(tvalue)
-                print("Total_TCs to be executed", total_tss)
+                print("Total Test Suites to be executed", total_tss)
 
                 if (len(failed_tss) != 0 and total_tss == 0):
-                    print("Please check the failed/not triggered TCs:", failed_tss)
+                    print("Please check the failed/not triggered Testsuites:", failed_tss)
                     sys.exit(-1)
