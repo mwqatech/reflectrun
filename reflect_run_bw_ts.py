@@ -1,4 +1,5 @@
 import requests
+import time
 import json
 import sys
 import yaml
@@ -12,7 +13,7 @@ for key, value in yaml.load(open('testdata_ts.yml'), Loader=SafeLoader).items():
     if (str(key) == 'BW'):
         total_tss = len(value)
         for tkey, tvalue in value.items():
-            print("Testsuite ID = ", tvalue)
+            print("Test Suite ID = ", tvalue)
             url = "https://api.reflect.run/v1/suites/" + str(tvalue) + "/executions"
             print(url)
 
@@ -40,7 +41,7 @@ for key, value in yaml.load(open('testdata_ts.yml'), Loader=SafeLoader).items():
                     print("Total Test Suites to be executed", total_tss)
 
                 if (len(failed_tss) != 0 and total_tss == 0):
-                    print("Please check the failed/not triggered Testsuites:", failed_tss)
+                    print("Please check the failed/not triggered Test Suites:", failed_tss)
                     sys.exit(-1)
             else:
                 total_tss -= 1
@@ -49,5 +50,5 @@ for key, value in yaml.load(open('testdata_ts.yml'), Loader=SafeLoader).items():
                 print("Total Test Suites to be executed", total_tss)
 
                 if (len(failed_tss) != 0 and total_tss == 0):
-                    print("Please check the failed/not triggered Testsuites:", failed_tss)
+                    print("Please check the failed/not triggered Test Suites:", failed_tss)
                     sys.exit(-1)
