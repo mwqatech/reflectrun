@@ -45,7 +45,9 @@ void create_newjira_issue() {
     echo response.successful.toString()
     echo response.data.toString()
     
-    def attachment = jiraUploadAttachment site: 'JIRA', idOrKey: 'TEST-REPORT', file: 'test_report.txt'
+    def attachment = "${env.BUILD_URL}/consoleText"
+    
+    //def attachment = jiraUploadAttachment site: 'JIRA', idOrKey: 'TEST-REPORT', file: 'test_report.txt'
     echo attachment.data.toString()
 
     }
