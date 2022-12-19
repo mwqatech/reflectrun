@@ -49,7 +49,7 @@ void create_newjira_issue() {
     sh "curl -sS ${env.BUILD_URL}/consoleText >> log.txt"
     sh "cat log.txt"
     
-    def attachment = jiraUploadAttachment site: 'JIRA', key: jirakey, file: 'log.txt'
+    def attachment = jiraUploadAttachment site: 'JIRA', idOrKey: jirakey, file: 'log.txt'
     echo attachment.toString()
 
     }
