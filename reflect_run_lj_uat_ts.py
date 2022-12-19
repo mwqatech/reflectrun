@@ -30,7 +30,6 @@ for key, value in yaml.load(open('testdata_uat_ts.yml'), Loader=SafeLoader).item
 
                 while True:
                     response2 = requests.request("GET", url2, headers=headers)
-                    print(response2.text)
                     data = json.loads(response2.text)
                     if ((data['status'] != 'pending') and (data['status'] != 'running') and (data['isFinished'] != False)):
                         print("Execution of Test Suite " + str(tvalue) + " is in Progress ...\n")
