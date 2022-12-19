@@ -44,12 +44,12 @@ void create_newjira_issue() {
     response = jiraNewIssue issue: NewJiraIssue, site: 'JIRA'
     echo response.successful.toString()
     echo response.data.key.toString()
-    def jirakey = response.data.key.toString()
+    //def jirakey = response.data.key.toString()
 
-    sh "curl -sS ${env.BUILD_URL}/consoleText >> log.txt"
+    sh "curl -sS ${env.BUILD_URL}/consoleText --output log.txt"
     sh "cat log.txt"
     
-    def attachment = jiraUploadAttachment site: 'JIRA', idOrKey: jirakey, file: 'log.txt'
+    def attachment = jiraUploadAttachment site: 'JIRA', idOrKey: response.data.key.toString(), file: 'log.txt'
     echo attachment.toString()
 
     }
