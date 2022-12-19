@@ -45,10 +45,11 @@ void create_newjira_issue() {
     echo response.successful.toString()
     echo response.data.toString()
     
-    def attachment = "${env.BUILD_URL}/consoleText"
+    //def attachment = "${env.BUILD_URL}/consoleText"
+    sh "curl  ${env.BUILD_URL}/consoleText -o attachment"
     
     //def attachment = jiraUploadAttachment site: 'JIRA', idOrKey: 'TEST-REPORT', file: 'test_report.txt'
-    echo attachment.data.toString()
+    echo attachment
 
     }
   }
