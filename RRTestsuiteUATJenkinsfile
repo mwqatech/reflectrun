@@ -5,7 +5,7 @@ pipeline {
      parallel{
         stage('Man Matters Sanity') {
           steps {
-            sh 'la -l'
+            sh 'ls -l'
           }
         }
         stage('BE Bodywise Sanity') {
