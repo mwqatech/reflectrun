@@ -45,10 +45,10 @@ void create_newjira_issue() {
     echo response.successful.toString()
     echo response.data.toString()
 
-    sh "curl  ${env.BUILD_URL}consoleText -o ./log.txt"
+    sh "${env.BUILD_URL}consoleText > log.txt"
     sh "cat log.txt"
     
-    def attachment = jiraUploadAttachment site: 'JIRA', idOrKey: 'TEST-REPORT', file: 'log.txt'
+    def attachment = jiraUploadAttachment site: 'JIRA', Key: 'MWQA', file: 'log.txt'
     echo attachment.toString()
 
     }
