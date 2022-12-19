@@ -15,7 +15,7 @@ for key, value in yaml.load(open('testdata_ts.yml'), Loader=SafeLoader).items():
             url = "https://api.reflect.run/v1/suites/" + str(tvalue) + "/executions"
             print(url)
 
-            payload = "{ "overrides": {"hostnames": [{"original": "ourlittlejoys.com", "replacement": "uat.ourlittlejoys.com"}]}}"
+            payload = json.dumps({"overrides": {"hostnames": [{"original": "ourlittlejoys.com", "replacement”: ”uat.ourlittlejoys.com"}]}})
             headers = {"x-api-key": "j5rPTzYWK16hh7xyPRsnz1EYDIbyAcUE7sOKNp4U"}
 
             response = requests.request("POST", url, data=payload, headers=headers)
