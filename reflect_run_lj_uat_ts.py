@@ -7,6 +7,10 @@ from yaml.loader import SafeLoader
 data = {}
 total_tss = 0
 failed_tss = []
+
+payload = json.dumps({"overrides": {"hostnames": [{"original": "ourlittlejoys.com", "replacement": "uat.ourlittlejoys.com"}]}})
+apikey = "j5rPTzYWK16hh7xyPRsnz1EYDIbyAcUE7sOKNp4U"
+
 for key, value in yaml.load(open('testdata_uat_ts.yml'), Loader=SafeLoader).items():
     if (str(key) == 'LJ'):
         total_tss = len(value)
@@ -15,8 +19,7 @@ for key, value in yaml.load(open('testdata_uat_ts.yml'), Loader=SafeLoader).item
             url = "https://api.reflect.run/v1/suites/" + str(tvalue) + "/executions"
             print(url)
 
-            payload = json.dumps({"overrides": {"hostnames": [{"original": "ourlittlejoys.com", "replacement": "uat.ourlittlejoys.com"}]}})
-            headers = {"x-api-key": "j5rPTzYWK16hh7xyPRsnz1EYDIbyAcUE7sOKNp4U"}
+            headers = {"x-api-key": apikey}
 
             response = requests.request("POST", url, data=payload, headers=headers)
             if (response.status_code == 200):
