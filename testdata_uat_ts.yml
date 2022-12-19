@@ -1,2 +1,15 @@
+BW:
+  Testsuite1: bb-web-sanity-1-login-new-user-flow
+  Testsuite2: bb-web-sanity-2-user-profile-and-navigation
+  Testsuite3: bb-web-sanity-3-consult-flow-dochub
+  Testsuite4: bb-web-sanity-4-category-payment
 LJ:
-  Testsuite1: lj-sanity-test-suite
+  Testsuite1: lj-web-sanity-1-login-new-user-flow
+  Testsuite2: lj-web-sanity-2-user-profile-navigation
+  Testsuite3: lj-web-sanity-3-category-payment
+  Testsuite4: lj-web-sanity-4-checkout-social-media-flow
+MM:
+  Testsuite1: mm-web-sanity-1-category-page-navigation
+  Testsuite2: mm-web-sanity-2-home-navigation
+  Testsuite3: mm-web-sanity-3-appointment-consult
+  Testsuite4: mm-web-sanity-4-loginregistration
