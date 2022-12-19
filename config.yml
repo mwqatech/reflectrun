@@ -1,2 +1,11 @@
 config:
   RR_API_Token: 'j5rPTzYWK16hh7xyPRsnz1EYDIbyAcUE7sOKNp4U'
+  LJ:
+    prod_url: ''
+    uat_url: ''
+  BW:
+    prod_url: ''
+    uat_url: ''
+  MM:
+    prod_url: ''
+    uat_url: '' 
