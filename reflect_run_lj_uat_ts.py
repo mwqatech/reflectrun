@@ -7,7 +7,7 @@ from yaml.loader import SafeLoader
 data = {}
 total_tss = 0
 failed_tss = []
-for key, value in yaml.load(open('testdata_ts.yml'), Loader=SafeLoader).items():
+for key, value in yaml.load(open('testdata_uat_ts.yml'), Loader=SafeLoader).items():
     if (str(key) == 'LJ'):
         total_tss = len(value)
         for tkey, tvalue in value.items():
