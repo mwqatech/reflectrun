@@ -46,7 +46,7 @@ void create_newjira_issue() {
     echo response.data.toString()
 
     
-    echo "${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}"
+    echo "${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log"
     
     def attachment = jiraUploadAttachment site: 'JIRA', idOrKey: response.data.key.toString(), file: "${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log"
     echo attachment.toString()
