@@ -38,10 +38,11 @@ void create_newjira_issue() {
       stage('Defect Management') {
         def NewJiraIssue = [fields: [project: [key: 'MWQA'],
             summary: "QA Sanity Test Build for Job ${env.JOB_NAME}: Build - ${currentBuild.number} and Status -> ${currentBuild.currentResult}",
-            description: 'Sanity TCs Failed for Man Matters/Be Bodywise/Little Joys -> Please check on ${env.BUILD_URL} and ${currentBuild.number} for the Job ${env.JOB_NAME}',
+            description: "Sanity TCs Failed for Man Matters/Be Bodywise/Little Joys -> Please check on ${env.BUILD_URL} and ${currentBuild.number} for the Job ${env.JOB_NAME}",
             issuetype: [id: '10108']]]
 
-    response = jiraNewIssue issue: NewJiraIssue, site: 'JIRA', attachLog: true
+    response = jiraNewIssue issue: NewJiraIssue, site: 'JIRA'
+    jiraUploadAttachment file: '${currentBuild.rawBuild.log}', idOrKey: 'logs', site: 'JIRA'
 
     echo response.successful.toString()
     echo response.data.toString()
