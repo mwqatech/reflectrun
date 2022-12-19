@@ -43,8 +43,9 @@ void create_newjira_issue() {
 
     response = jiraNewIssue issue: NewJiraIssue, site: 'JIRA'
     echo response.successful.toString()
-    def jirakey = response.data.toString()[1]
-    echo response.data.toString()[1]
+    def jirakey = response.data.toString()
+    echo jirakey[1]
+    echo response.data.toString()
 
     sh "curl -sS ${env.BUILD_URL}/consoleText >> log.txt"
     sh "cat log.txt"
