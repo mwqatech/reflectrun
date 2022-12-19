@@ -32,9 +32,11 @@ for key, value in yaml.load(open('testdata_uat_ts.yml'), Loader=SafeLoader).item
                     response2 = requests.request("GET", url2, headers=headers)
                     data = json.loads(response2.text)
                     if ((data['status'] != 'pending') and (data['status'] != 'running') and (data['isFinished'] != False)):
-                        print("Execution of Test Suite " + str(tvalue) + "is in Progress ...\n")
+                        print("Execution of Test Suite " + str(tvalue) + " is in Progress ...\n")
                         break
-
+                        
+                print("Execution of Test Suite " + str(tvalue) + " is Completed!!!\n")
+                
                 if (data['status'] == 'failed'):
                     print("Test Execution of Test Suite ID " + str(tvalue) + " is Failed\n")
                     failed_tss.append(tvalue)
