@@ -5,7 +5,7 @@ pipeline {
      parallel{
         stage('Man Matters Sanity') {
           steps {
-            sh 'ls -l'
+            sh 'python3 reflect_run_mm_ts.py'
           }
         }
         stage('BE Bodywise Sanity') {
