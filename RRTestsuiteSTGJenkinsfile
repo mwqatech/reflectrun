@@ -42,7 +42,7 @@ void create_newjira_issue() {
             issuetype: [id: '10108']]]
 
     response = jiraNewIssue issue: NewJiraIssue, site: 'JIRA'
-    jiraUploadAttachment file: "${currentBuild.rawBuild.log}", idOrKey: 'logs', site: 'JIRA'
+    jiraUploadAttachment file: "${currentBuild.buildLog}", idOrKey: 'jenkins-logs', site: 'JIRA'
 
     echo response.successful.toString()
     echo response.data.toString()
