@@ -46,11 +46,11 @@ void create_newjira_issue() {
     echo response.data.toString()
 
     //sh "cat ${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log > jenkinslog.txt"
-    sh "curl ${env.BUILD_URL}/consoleText > jenkinslog.txt"
+    //sh "curl ${env.BUILD_URL}/consoleText > jenkinslog.txt"
     //http://localhost:8080/job/RRTestsuiteSTGExecution/39/ 
-    sh 'cat jenkinslog.txt'
+    //sh 'cat jenkinslog.txt'
     
-    def attachment = jiraUploadAttachment site: 'JIRA', idOrKey: response.data.key.toString(), file: jenkinslog.txt
+    def attachment = jiraUploadAttachment site: 'JIRA', idOrKey: response.data.key.toString(), file: "${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log"
     echo attachment.toString()
 
     }
