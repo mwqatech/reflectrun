@@ -1,19 +1,19 @@
 pipeline {
   agent any
   stages {
-    stage('QA Sanity'){
+    stage('QA UAT Sanity'){
      parallel{
-        stage('Man Matters Sanity') {
+        stage('Man Matters UAT Sanity') {
           steps {
             sh 'ls -l'
           }
         }
-        stage('BE Bodywise Sanity') {
+        stage('BE Bodywise UAT Sanity') {
           steps {
             sh 'ls -l'
           }
         }
-        stage('Little Joys Sanity') {
+        stage('Little Joys UAT Sanity') {
           steps {
             sh 'python3 reflect_run_lj_uat_ts.py'
           }
