@@ -39,7 +39,7 @@ void create_newjira_issue() {
     node {
       stage('Defect Management') {
         def NewJiraIssue = [fields: [project: [key: 'MWQA'],
-            summary: QA Sanity Test Build ${currentBuild.number} Status -> ${currentBuild.currentResult},
+            summary: "QA Sanity Test Build ${currentBuild.number} Status -> ${currentBuild.currentResult}",
             description: 'Sanity TCs Failed for Man Matters/Be Bodywise/Little Joys -> Please check on ${build_url} and ${build_num} for the job ${job_name}',
             issuetype: [id: '10108']]]
 
