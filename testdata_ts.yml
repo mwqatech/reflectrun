@@ -4,10 +4,10 @@ BW:
   Testsuite3: bb-web-sanity-3-consult-flow-dochub
   Testsuite4: bb-web-sanity-4-category-payment
 LJ:
-  Testsuite1: lj-web-sanity-1-login-new-user-flow
-  Testsuite2: lj-web-sanity-2-user-profile-navigation
-  Testsuite3: lj-web-sanity-3-category-payment
-  Testsuite4: lj-web-sanity-4-checkout-social-media-flow
+  Testsuite1: lj-web-category-payment
+  Testsuite2: lj-web-checkout-social-media-flow
+  Testsuite3: lj-web-login-new-user-flow
+  Testsuite4: lj-web-user-profile-navigation
 MM:
   Testsuite1: mm-web-sanity-1-category-page-navigation
   Testsuite2: mm-web-sanity-2-home-navigation
