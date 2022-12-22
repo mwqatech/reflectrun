@@ -30,7 +30,7 @@ pipeline {
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"     
             }
         failure {
-          slackUploadFile filePath: '"${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile'
+          slackUploadFile filePath: "${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile'
           create_newjira_issue()
           //slackUploadFile filePath: '"${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile' 
         }
