@@ -23,15 +23,16 @@ pipeline {
   }   
   post {
         always {
+          slackUploadFile filePath: '"${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile'
           emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
                 attachLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
                 to: 'bhushan.pujar@mosaicwellness.in, arun.ramesh@mosaicwellness.in, abhay.kaintura@mosaicwellness.in, tejaswini.gowda@mosaicwellness.in, basanagouda.b@mosaicwellness.in', 
-                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
-           slackUploadFile filePath: '"${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile'     
+                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"     
             }
         failure {
+          slackUploadFile filePath: '"${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile'
           create_newjira_issue()
-          slackUploadFile filePath: '"${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile' 
+          //slackUploadFile filePath: '"${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile' 
         }
     }  
 }
@@ -52,8 +53,6 @@ void create_newjira_issue() {
     
     def attachment = jiraUploadAttachment site: 'JIRA', idOrKey: response.data.key.toString(), file: "${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log"
     echo attachment.toString()
-    //slackUploadFile filePath: '"${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile'
-
     }
   }
 }
