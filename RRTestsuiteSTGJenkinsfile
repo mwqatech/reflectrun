@@ -23,7 +23,7 @@ pipeline {
   }   
   post {
         always {
-          slackUploadFile filePath: '"${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile'
+          slackUploadFile filePath: "${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: "jenkins_logfile"
           emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
                 attachLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
                 to: 'bhushan.pujar@mosaicwellness.in, arun.ramesh@mosaicwellness.in, abhay.kaintura@mosaicwellness.in, tejaswini.gowda@mosaicwellness.in, basanagouda.b@mosaicwellness.in', 
