@@ -30,7 +30,6 @@ pipeline {
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"     
             }
         failure {
-          slackUploadFile filePath: "${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile'
           create_newjira_issue()
           //slackUploadFile filePath: '"${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile' 
         }
@@ -43,7 +42,8 @@ void create_newjira_issue() {
             summary: "QA Sanity Test Build for Job ${env.JOB_NAME}: Build - ${currentBuild.number} and Status -> ${currentBuild.currentResult}",
             description: "Sanity TCs Failed for Man Matters/Be Bodywise/Little Joys -> Please check on ${env.BUILD_URL} and ${currentBuild.number} for the Job ${env.JOB_NAME}",
             issuetype: [id: '10108']]]
-
+    
+    slackUploadFile filePath: "${JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${currentBuild.number}/log", initialComment: 'jenkins_logfile'
     response = jiraNewIssue issue: NewJiraIssue, site: 'JIRA'
     echo response.successful.toString()
     echo response.data.toString()
