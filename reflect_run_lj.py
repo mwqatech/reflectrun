@@ -8,6 +8,7 @@ data = {}
 total_tcs = 0
 passed_tcs = []
 failed_tcs = []
+failed_tcs_1 = []
 for key, value in yaml.load(open('testdata.yml'), Loader=SafeLoader).items():
     if(str(key) == 'LJ_Testdata'):
         total_tcs = len(value)
